@@ -4,10 +4,65 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <title>Sentiment Analysis UI</title>
+    <style>
+      body{
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        margin: 0;
+        background-color: azure;
+      }
+      .container{
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgb(0,0,0,0.1);
+      }
+      input[type="text"]{
+        width: calc(100% - 100px);
+        padding: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button{
+        width: 900px;
+        padding: 10px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      button:hover{
+        background-color: brown;
+      }
+      .sentences {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-left: 5px solid #ccc;
+      }
+      .positive {
+        border-left-color: green;
+      }
+      .negative {
+        border-left-color:orangered;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <div class="container">
+      <h2>Submit a sentence for Sentiment Analysis</h2>
+      <input type="text" id="sentenceInput" placeholder="Enter your sentence here...">
+      <button onclick="submitSentence()">Submit</button>
+      <div id="sentence" class="sentence"></div>
+    </div>
   </body>
 </html>
