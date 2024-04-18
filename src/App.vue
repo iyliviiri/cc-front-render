@@ -12,10 +12,36 @@ import TheWelcome from './components/TheWelcome.vue'
     </div>
   </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <h2>Submit a sentence for Sentiment Analysis</h2>
+    <input type="text" v-model="sentence" placeholder="Enter your sentence here...">
+    <button @click="analyzeSentence">Analyze</button>
+    <div v-if="result" :class="result.score > 0 ? 'positive' : 'negative'">
+      <p>{{ result.score > 0 ? 'Positive' : 'Negative' }} sentiment</p>
+      <p>{{ result.score }}</p>
+    </div>
+  </div>
 </template>
+
+
+<script>
+  import Sentiment from 'sentiment';
+
+  export default {
+    data() {
+      return {
+        sentence: '',
+        result: null
+      };
+    },
+    methods: {
+      analyzeSentence() {
+        const sentiment = new Sentiment();
+        this.result = sentiment.analyze(this.sentence);
+      }
+    }
+  };
+</script>
 
 <style scoped>
 header {
@@ -25,6 +51,13 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+.positive {
+  color: green;
+}
+.negative {
+  color: red;
 }
 
 @media (min-width: 1024px) {
