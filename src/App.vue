@@ -53,13 +53,6 @@ header {
   margin: 0 auto 2rem;
 }
 
-.positive {
-  color: green;
-}
-.negative {
-  color: red;
-}
-
 @media (min-width: 1024px) {
   header {
     display: flex;
